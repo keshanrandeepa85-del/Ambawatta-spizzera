@@ -149,6 +149,45 @@
 
         </main>
     </div>
+    <div id="edit-product-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-modal" id="close-edit-modal">&times;</span>
+        <h2>නිෂ්පාදනය සංස්කරණය කිරීම (Edit Product)</h2>
+
+        <form id="edit-product-form">
+            <input type="hidden" id="edit-product-id">
+
+            <div class="form-group">
+                <label for="edit-product-name">නම (Name)</label>
+                <input type="text" id="edit-product-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit-product-category">වර්ගය (Category)</label>
+                <select id="edit-product-category" required>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Package">Package</option>
+                    <option value="Sides">Sides</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit-product-price">මිල (LKR)</label>
+                <input type="number" id="edit-product-price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-product-img">පින්තූර ගොනු නම (Image File Name)</label>
+                <input type="text" id="edit-product-img" placeholder="images/pizzas/chickentikka.jpg වැනි" required>
+            </div>
+
+            <button type="submit" class="btn-primary-full">
+                වෙනස්කම් සුරකින්න (Save Changes)
+            </button>
+        </form>
+    </div>
+</div>
+
 
     <script src="js/admin.js"></script>
 </body>
