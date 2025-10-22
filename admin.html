@@ -3,223 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ambawatta's Pizzeria | Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css"> 
+    <title>Ambawatta's Pizzeria - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
-    <div class="admin-container">
-        <nav class="sidebar">
-            <div class="logo-admin">
-                <h2>🍕 Ambawatta Admin</h2>
-            </div>
-            <ul class="nav-links">
-                <li class="nav-item active" data-tab="dashboard">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </li>
-                <li class="nav-item" data-tab="products">
-                    <i class="fas fa-pizza-slice"></i> නිෂ්පාදන
-                </li>
-                <li class="nav-item" data-tab="slider">
-                    <i class="fas fa-images"></i> මුල් පිටුවේ දීමනා
-                </li>
-                <li class="nav-item" data-tab="gallery">
-                    <i class="fas fa-camera-retro"></i> ගැලරිය
-                </li>
-                <li class="nav-item" data-tab="settings">
-                    <i class="fas fa-cogs"></i> වෙබ් අඩවි සැකසුම්
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <a href="index.html" target="_blank" class="btn-logout"><i class="fas fa-sign-out-alt"></i> වෙබ් අඩවියට යන්න</a>
-            </div>
-        </nav>
+    <header class="admin-header">
+        <h1>පාලක පැනලය (Admin Dashboard)</h1>
+    </header>
 
-        <main class="main-content">
-            <header class="admin-header">
-                <h1>පරිපාලක පැනලය</h1>
-                <div class="admin-profile">
-                    <i class="fas fa-user-circle"></i> <span>පරිපාලක</span>
-                </div>
-            </header>
+    <main class="admin-main container">
 
-            <div class="tab-content active" id="dashboard">
-                <h2>ප්‍රධාන දර්ශනය (Overview)</h2>
-                <p>ඔබගේ ඊමේල් පද්ධතියට (`keshanrandeepa85@gmail.com`) ලැබෙන ඇණවුම් පරීක්ෂා කරන්න.</p>
-                <p class="info-note">මෙම පැනලයේ ඔබ සිදුකරන සියලු වෙනස්කම් ඔබගේ වෙබ් බ්‍රව්සරයේ `localStorage` හි සුරැකේ. වෙබ් අඩවිය ස්වයංක්‍රීයව එම දත්ත ලබා ගනී. වෙනත් පරිගණකයකින් මෙම දත්ත පාලනය කළ නොහැක.</p>
-            </div>
-
-            <div class="tab-content" id="products" style="display: none;">
-                <h2>නිෂ්පාදන කළමනාකරණය</h2>
-                <button class="btn-primary-add" id="add-product-btn">
-                    <i class="fas fa-plus"></i> නව Pizza/Package එකතු කරන්න
-                </button>
-                <table id="product-table" class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>නම</th>
-                            <th>වර්ගය (Category)</th>
-                            <th>මිල (LKR)</th>
-                            <th>පින්තූර ගොනුව</th>
-                            <th>ක්‍රියා</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
-            <div class="tab-content" id="slider" style="display: none;">
-                <h2>මුල් පිටුවේ දීමනා (Hero Slider)</h2>
-                <p class="info-note">මුල් පිටුවේ ඉහළින්ම පෙන්වන Slides 2 මෙතැනින් පාලනය කරන්න. පින්තූර `images/offers/` ෆෝල්ඩරය තුළ තිබිය යුතුය.</p>
-                
-                <div class="settings-grid">
-                    <div class="setting-card">
-                        <h3>Slide 1</h3>
-                        <div class="form-group-admin">
-                            <label for="slider1-title">මාතෘකාව (Title)</label>
-                            <input type="text" id="slider1-title">
-                        </div>
-                        <div class="form-group-admin">
-                            <label for="slider1-text">විස්තරය (Text)</label>
-                            <input type="text" id="slider1-text">
-                        </div>
-                        <div class="form-group-admin">
-                            <label for="slider1-img">පින්තූර ගොනු නම (Image File)</label>
-                            <input type="text" id="slider1-img" placeholder="offer1.jpg">
-                        </div>
-                    </div>
-                    
-                    <div class="setting-card">
-                        <h3>Slide 2</h3>
-                        <div class="form-group-admin">
-                            <label for="slider2-title">මාතෘකාව (Title)</label>
-                            <input type="text" id="slider2-title">
-                        </div>
-                        <div class="form-group-admin">
-                            <label for="slider2-text">විස්තරය (Text)</label>
-                            <input type="text" id="slider2-text">
-                        </div>
-                        <div class="form-group-admin">
-                            <label for="slider2-img">පින්තූර ගොනු නම (Image File)</label>
-                            <input type="text" id="slider2-img" placeholder="offer2.jpg">
-                        </div>
-                    </div>
-                </div>
-                <button class="btn-primary-add" id="save-slider-btn"><i class="fas fa-save"></i> Slider සුරකින්න</button>
-            </div>
-
-
-            <div class="tab-content" id="gallery" style="display: none;">
-                <h2>ගැලරිය කළමනාකරණය</h2>
-                <p class="info-note">
-                    ගැලරියට එක් කිරීමට අවශ්‍ය පින්තූරවල ලිපින (Image Paths) මෙහි ඇතුළත් කරන්න. එක් එක් ලිපිනය නව රේඛාවක (line) තිබිය යුතුය.
-                    <br>
-                    උදා: `images/gallery/my-pizza-1.jpg`
-                </p>
-                <div class="form-group-admin">
-                    <label for="gallery-image-list">පින්තූර ලිපින ලැයිස්තුව (Image Paths):</label>
-                    <textarea id="gallery-image-list" rows="10" placeholder="images/gallery/pic1.jpg&#10;images/gallery/pic2.jpg"></textarea>
-                </div>
-                <button class="btn-primary-add" id="save-gallery-btn"><i class="fas fa-save"></i> ගැලරිය සුරකින්න</button>
-            </div>
-
-            <div class="tab-content" id="settings" style="display: none;">
-                <h2>වෙබ් අඩවි සැකසුම් (Site Settings)</h2>
-                
-                <h3>ව්‍යාපාරයේ තත්ත්වය (Store Status)</h3>
-                <div class="form-group-admin">
-                    <label for="setting-store-status">ඇණවුම් භාර ගැනීම</label>
-                    <select id="setting-store-status">
-                        <option value="open">Open (ඇණවුම් භාර ගනී)</option>
-                        <option value="closed">Closed (ඇණවුම් භාර නොගනී)</option>
-                    </select>
-                </div>
-                <hr>
-
-                <h3>සබඳතා තොරතුරු (Contact Info)</h3>
-                <div class="settings-grid">
-                    <div class="form-group-admin">
-                        <label for="setting-phone">ප්‍රධාන දුරකථන අංකය</label>
-                        <input type="tel" id="setting-phone" value="0779459609">
-                    </div>
-                    <div class="form-group-admin">
-                        <label for="setting-feedback-email">යෝජනා/පැමිණිලි ඊමේල්</label>
-                        <input type="email" id="setting-feedback-email" value="paveeshathenuwanmoon@gmail.com">
-                    </div>
-                </div>
-                <hr>
-
-                <h3>සමාජ මාධ්‍ය (Social Media)</h3>
-                <div class="settings-grid">
-                    <div class="form-group-admin">
-                        <label for="setting-social-fb">Facebook URL</label>
-                        <input type="text" id="setting-social-fb" placeholder="https://facebook.com/yourpage">
-                    </div>
-                    <div class="form-group-admin">
-                        <label for="setting-social-tiktok">TikTok URL</label>
-                        <input type="text" id="setting-social-tiktok" placeholder="https://tiktok.com/@yourpage">
-                    </div>
-                    <div class="form-group-admin">
-                        <label for="setting-social-whatsapp">WhatsApp URL</label>
-                        <input type="text" id="setting-social-whatsapp" placeholder="https://wa.me/94771234567">
-                    </div>
-                </div>
-                <hr>
-                
-                <h3>වෙබ් අඩවියේ වචන (Content)</h3>
-                <div class="settings-grid">
-                    <div class="form-group-admin">
-                        <label for="text-site-title">වෙබ් අඩවියේ Title (Browser Tab)</label>
-                        <input type="text" id="text-site-title" value="Ambawatta's Pizzeria | Online Order">
-                    </div>
-                    <div class="form-group-admin">
-                        <label for="text-delivery-zone">බෙදාහැරීමේ ප්‍රදේශයේ පණිවිඩය</label>
-                        <textarea id="text-delivery-zone" rows="3">අපි Imaduwa සහ Wanchawala අවට ප්‍රදේශවලට බෙදාහැරීම් සිදු කරන්නෙමු.</textarea>
-                    </div>
-                </div>
-                <button class="btn-primary-add" id="save-settings-btn"><i class="fas fa-save"></i> සියලු සැකසුම් සුරකින්න</button>
-            </div>
-
-        </main>
-    </div>
-    
-    <div id="edit-product-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close-modal" id="close-edit-modal">&times;</span>
-            <h2 id="modal-title">නිෂ්පාදනය සංස්කරණය කිරීම</h2>
-            <form id="edit-product-form">
-                <input type="hidden" id="edit-product-id">
-                <div class="form-group">
-                    <label for="edit-product-name">නම (Name)</label>
-                    <input type="text" id="edit-product-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit-product-category">වර්ගය (Category)</label>
-                    <select id="edit-product-category" required>
-                        <option value="Pizza">Pizza</option>
-                        <option value="Package">Package</option>
-                        <option value="Sides">Sides</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="edit-product-price">මිල (LKR)</label>
-                    <input type="number" id="edit-product-price" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="edit-product-img">පින්තූර ගොනු නම (Image File Name)</label>
-                    <input type="text" id="edit-product-img" placeholder="chickentikka.jpg (images/ ෆෝල්ඩරයේ නම අවශ්‍ය නැත)" required>
-                    <small>පින්තූරය `images/` ෆෝල්ඩරය තුළ තිබිය යුතුය.</small>
-                </div>
-                <button type="submit" class="btn-primary-full">
-                    <i class="fas fa-save"></i> වෙනස්කම් සුරකින්න
-                </button>
-            </form>
+        <div class="admin-tabs">
+            <button class="tab-button active" data-tab="settings">සැකසුම්</button>
+            <button class="tab-button" data-tab="products">නිෂ්පාදන</button>
+            <button class="tab-button" data-tab="gallery">ගැලරිය</button>
         </div>
-    </div>
 
-    <script src="js/settings.js"></script>
-    <script src="js/admin.js"></script>
+        <div id="settings" class="tab-content active">
+            <h2>සාමාන්‍ය සැකසුම්</h2>
+            
+            <section class="admin-section">
+                <h3>වෙළඳසැලේ තත්ත්වය (Store Status)</h3>
+                <div class="form-group">
+                    <label for="admin-store-status">වෙළඳසැල විවෘතද/වැසී ඇත්ද?</label>
+                    <select id="admin-store-status">
+                        <option value="open">✅ විවෘතයි (Open)</option>
+                        <option value="closed">❌ වසා ඇත (Closed)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="admin-store-message">වසා ඇති විට පෙන්වන පණිවිඩය:</label>
+                    <input type="text" id="admin-store-message" placeholder="උදා: අපි දැන් වසා ඇත. හෙට උදේ 9ට නැවත විවෘත වේ.">
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <h3>සම්බන්ධතා විස්තර (Contact Details)</h3>
+                <div class="form-group">
+                    <label for="admin-contact-phone">දුරකථන අංකය:</label>
+                    <input type="tel" id="admin-contact-phone">
+                </div>
+                <div class="form-group">
+                    <label for="admin-contact-email">ඇණවුම් Email:</label>
+                    <input type="email" id="admin-contact-email">
+                </div>
+            </section>
+        </div>
+
+        <div id="products" class="tab-content">
+            <h2>නිෂ්පාදන කළමනාකරණය</h2>
+            
+            <button id="add-new-product-btn" class="btn-primary"><i class="fas fa-plus"></i> නව භාණ්ඩයක් එක් කරන්න</button>
+
+            <div id="product-modal" class="modal">
+                <div class="modal-content admin-modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>නිෂ්පාදන විස්තර</h3>
+                    <form id="product-form">
+                        <input type="hidden" id="product-id" name="id">
+                        <div class="form-group">
+                            <label for="product-name">නම:</label>
+                            <input type="text" id="product-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-category">වර්ගීකරණය:</label>
+                            <select id="product-category" required>
+                                <option value="Pizza">Pizza</option>
+                                <option value="Package">Package</option>
+                                <option value="Sides">Sides</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">මිල (LKR):</label>
+                            <input type="number" id="product-price" step="50.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-description">විස්තරය:</label>
+                            <textarea id="product-description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-img">රූපයේ ගොනු නාමය (images/ folder එකේ):</label>
+                            <input type="text" id="product-img" placeholder="උදා: pizza_pepperoni.jpg" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-is-special">විශේෂ භාණ්ඩයක් ද?</label>
+                            <input type="checkbox" id="product-is-special">
+                        </div>
+                        <button type="submit" class="btn-primary-full" id="save-product-btn">නිෂ්පාදනය සුරකින්න</button>
+                    </form>
+                </div>
+            </div>
+
+            <table class="admin-table" id="products-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>නම</th>
+                        <th>වර්ගීකරණය</th>
+                        <th>මිල</th>
+                        <th>විශේෂ</th>
+                        <th>ක්‍රියා</th>
+                    </tr>
+                </thead>
+                <tbody id="products-table-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="gallery" class="tab-content">
+            <h2>ගැලරි පින්තූර කළමනාකරණය</h2>
+            <button id="add-new-gallery-btn" class="btn-primary"><i class="fas fa-plus"></i> නව පින්තූරයක් එක් කරන්න</button>
+
+            <table class="admin-table" id="gallery-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ගොනු නාමය</th>
+                        <th>විස්තරය</th>
+                        <th>ක්‍රියා</th>
+                    </tr>
+                </thead>
+                <tbody id="gallery-table-body">
+                    </tbody>
+            </table>
+            
+            <div id="gallery-modal" class="modal">
+                <div class="modal-content admin-modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>ගැලරි පින්තූර විස්තර</h3>
+                    <form id="gallery-form">
+                        <input type="hidden" id="gallery-id" name="id">
+                        <div class="form-group">
+                            <label for="gallery-img-name">රූපයේ ගොනු නාමය (images/ folder එකේ):</label>
+                            <input type="text" id="gallery-img-name" placeholder="උදා: pizza_shot_1.jpg" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gallery-caption">පින්තූරයේ විස්තරය:</label>
+                            <input type="text" id="gallery-caption" placeholder="උදා: අපගේ අලුත් Chicken BBQ Pizza">
+                        </div>
+                        <button type="submit" class="btn-primary-full" id="save-gallery-btn">පින්තූරය සුරකින්න</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <button id="save-all-changes-btn" class="btn-primary-full admin-save-button">
+            සියලු වෙනස්කම් සුරකින්න සහ ප්‍රකාශයට පත් කරන්න
+        </button>
+        <p class="warning-text">⚠️ **මෙය Netlify/GitHub වෙත වෙනස්කම් යවන්නේ නැත.** මෙය ඔබගේ බ්‍රව්සරයේ දේශීයව (locally) දත්ත යාවත්කාලීන කරයි.</p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ambawatta's Pizzeria Admin.</p>
+    </footer>
+
+    <script src="js/settings.js"></script> 
+    <script src="js/admin.js"></script> 
 </body>
 </html>
