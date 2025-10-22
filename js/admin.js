@@ -2,24 +2,41 @@
    Ambawatta's Pizzeria - Admin Dashboard System
    ========================================= */
 
+// =========================================================
+// Global Variables (DOM elements outside of listener to be accessible by functions)
+// =========================================================
+const editModal = document.getElementById('edit-product-modal');
+const editForm = document.getElementById('edit-product-form');
+const closeEditModalBtn = document.getElementById('close-edit-modal');
+// Initial Sample Data (මූලික දත්ත) - Global Scope එකේ තිබිය යුතුයි
+let adminProducts = [
+    { id: 1, name: "Signature Chicken Tikka", category: "Pizza", price: 2500, img: "chickentikka.jpg" },
+    { id: 2, name: "Family Feast Package", category: "Package", price: 6500, img: "family.jpg" },
+    { id: 3, name: "Cheesy Garlic Bread", category: "Sides", price: 850, img: "garlicbread.jpg" },
+];
+let adminOrders = [
+    { id: "A1005", customer: "කේෂාන්", phone: "0771234567", items: "1 Chicken Tikka, 1 Fries", total: 3200, status: "Pending", payment: "COD" },
+    { id: "A1004", customer: "රන්දීප", phone: "0719876543", items: "1 Seafood Delight", total: 2800, status: "Preparing", payment: "Card" },
+    { id: "A1003", customer: "නිලූකා", phone: "0771122334", items: "2 Margherita", total: 3600, status: "Out for Delivery", payment: "Bank" },
+    { id: "A1002", customer: "දිනුක", phone: "0774455667", items: "1 Family Feast", total: 6500, status: "Delivered", payment: "COD" },
+];
+
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Local Storage වෙතින් දත්ත Load කිරීම (මුලින්ම)
+    const storedProducts = localStorage.getItem('adminProducts');
+    if (storedProducts) {
+        // Local Storage හි දත්ත තිබේ නම්, එය භාවිතා කරන්න.
+        adminProducts = JSON.parse(storedProducts);
+    } else {
+        // දත්ත නොමැති නම්, Sample Data Local Storage හි Save කරන්න.
+        localStorage.setItem('adminProducts', JSON.stringify(adminProducts));
+    }
 
     // --- 1. Element Selection & Initial Setup ---
     const navItems = document.querySelectorAll('.nav-item');
     const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Sample Data (සැබෑ පද්ධතියේදී Database එකෙන් පැමිණිය යුතුය)
-    let adminProducts = [
-        { id: 1, name: "Signature Chicken Tikka", category: "Pizza", price: 2500, img: "chickentikka.jpg" },
-        { id: 2, name: "Family Feast Package", category: "Package", price: 6500, img: "family.jpg" },
-        { id: 3, name: "Cheesy Garlic Bread", category: "Sides", price: 850, img: "garlicbread.jpg" },
-    ];
-    let adminOrders = [
-        { id: "A1005", customer: "කේෂාන්", phone: "0771234567", items: "1 Chicken Tikka, 1 Fries", total: 3200, status: "Pending", payment: "COD" },
-        { id: "A1004", customer: "රන්දීප", phone: "0719876543", items: "1 Seafood Delight", total: 2800, status: "Preparing", payment: "Card" },
-        { id: "A1003", customer: "නිලූකා", phone: "0771122334", items: "2 Margherita", total: 3600, status: "Out for Delivery", payment: "Bank" },
-        { id: "A1002", customer: "දිනුක", phone: "0774455667", items: "1 Family Feast", total: 6500, status: "Delivered", payment: "COD" },
-    ];
     
     // --- 2. Sidebar Navigation Switching ---
     navItems.forEach(item => {
@@ -113,12 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. Products Management Logic ---
-    function loadProductsAdmin() {
+    // --- 4. Products Management Logic (නිවැරදි කරන ලද කොටස) ---
+    window.loadProductsAdmin = function () { // Global function එකක් ලෙස define කිරීම.
         const tableBody = document.querySelector('#product-table tbody');
         tableBody.innerHTML = '';
+        
+        // Local Storage වෙතින් දත්ත නැවත ලබා ගන්න
+        const products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
+        
+        // ගෝලීය adminProducts යාවත්කාලීන කරන්න
+        adminProducts = products;
 
-        adminProducts.forEach(product => {
+        products.forEach(product => {
             const row = tableBody.insertRow();
             row.innerHTML = `
                 <td>${product.id}</td>
@@ -126,10 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${product.category}</td>
                 <td>LKR ${product.price.toFixed(2)}</td>
                 <td>
-                    <button class="btn-action edit-product-btn" data-id="${product.id}"><i class="fas fa-edit"></i> Edit</button>
-                    <button class="btn-action delete-product-btn" data-id="${product.id}"><i class="fas fa-trash"></i> Delete</button>
+                    <button class="btn-action edit-product-btn" onclick="editProduct(${product.id})"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="btn-action delete-product-btn" onclick="deleteProduct(${product.id})"><i class="fas fa-trash"></i> Delete</button>
                 </td>
             `;
+            // නිවැරදි කිරීම: 'onclick' events මෙහිදී HTML එකටම ඇතුළත් කළා 👆
         });
     }
     
@@ -202,17 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('new-orders-count').textContent = adminOrders.filter(o => o.status === 'Pending').length;
     
     // Dashboad Overview තොරතුරු Load කිරීම (Sample)
-    // (මෙම කොටස මුලින්ම පෙනෙන පරිදි active class එක යොදා ඇත)
 
 });
 
 // =========================================================
-// 1. DOM Elements සහ Modal Variables නිර්වචනය කිරීම
+// Global Functions - Admin Dashboard හිදී ඕනෑම තැනක සිට ඇමතීමට (Call කිරීමට)
 // =========================================================
-
-const editModal = document.getElementById('edit-product-modal');
-const editForm = document.getElementById('edit-product-form');
-const closeEditModalBtn = document.getElementById('close-edit-modal');
 
 // Modal එක වසන්න
 if (closeEditModalBtn) {
@@ -222,13 +241,13 @@ if (closeEditModalBtn) {
 }
 
 
-// =========================================================
-// 2. PRODUCT DELETE FUNCTION
-// =========================================================
+// ---------------------------------------------------------
+// PRODUCT DELETE FUNCTION
+// ---------------------------------------------------------
 
-function deleteProduct(id) {
+window.deleteProduct = function(id) { // Global function එකක් ලෙස define කිරීම
     if (confirm(`ඔබට ID ${id} සහිත මෙම නිෂ්පාදනය ස්ථිරවම මකා දැමීමට අවශ්‍යද?`)) {
-        // Local Storage එකෙන් සියලු products ලබා ගන්න (නැතිනම් Sample Data)
+        // Local Storage එකෙන් සියලු products ලබා ගන්න
         let products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
         
         // Delete කිරීමට අවශ්‍ය product එක හැර අනෙකුත් products තෝරා ගන්න
@@ -240,16 +259,16 @@ function deleteProduct(id) {
         alert(`නිෂ්පාදනය ID ${id} සාර්ථකව මකා දැමිණි.`);
         
         // Product List එක නැවත පූරණය කරන්න
-        loadAdminProducts(); 
+        loadProductsAdmin(); 
     }
 }
 
 
-// =========================================================
-// 3. PRODUCT EDIT FUNCTION
-// =========================================================
+// ---------------------------------------------------------
+// PRODUCT EDIT FUNCTION
+// ---------------------------------------------------------
 
-function editProduct(id) {
+window.editProduct = function(id) { // Global function එකක් ලෙස define කිරීම
     let products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
     let productToEdit = products.find(p => p.id === id);
 
@@ -267,9 +286,9 @@ function editProduct(id) {
 }
 
 
-// =========================================================
-// 4. Edit Form එක Submit කළ විට දත්ත Save කිරීම
-// =========================================================
+// ---------------------------------------------------------
+// Edit Form එක Submit කළ විට දත්ත Save කිරීම
+// ---------------------------------------------------------
 
 if (editForm) {
     editForm.addEventListener('submit', function(e) {
@@ -300,9 +319,7 @@ if (editForm) {
 
         // 4. Modal එක වසා, ලැයිස්තුව නැවත පූරණය කිරීම
         editModal.style.display = 'none';
-        loadAdminProducts(); // Product list එක යාවත්කාලීන කරන්න
+        loadProductsAdmin(); // Product list එක යාවත්කාලීන කරන්න
         
     });
 }
-
-
