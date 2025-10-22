@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambawatta's Pizzeria | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+
+    <div class="admin-container">
+        <nav class="sidebar">
+            <div class="logo-admin">
+                <h2>🍕 Ambawatta Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-tab="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </li>
+                <li class="nav-item" data-tab="orders">
+                    <i class="fas fa-clipboard-list"></i> ඇණවුම් කළමනාකරණය <span class="badge" id="new-orders-count">3</span>
+                </li>
+                <li class="nav-item" data-tab="products">
+                    <i class="fas fa-pizza-slice"></i> නිෂ්පාදන කළමනාකරණය
+                </li>
+                <li class="nav-item" data-tab="content">
+                    <i class="fas fa-globe"></i> අන්තර්ගතය කළමනාකරණය (Text/SEO)
+                </li>
+                <li class="nav-item" data-tab="settings">
+                    <i class="fas fa-cogs"></i> සැකසුම් (Delivery Zone)
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout"><i class="fas fa-sign-out-alt"></i> වෙබ් අඩවියට යන්න</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="admin-header">
+                <h1>පරිපාලක පැනලය</h1>
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i> <span>පරිපාලක</span>
+                </div>
+            </header>
+
+            <div class="tab-content active" id="dashboard">
+                <h2>ප්‍රධාන දර්ශනය (Overview)</h2>
+                <div class="summary-grid">
+                    <div class="summary-card total-orders">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>අද දින ඇණවුම්</h3>
+                        <p id="today-orders">12</p>
+                    </div>
+                    <div class="summary-card total-revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>අද දින ආදායම</h3>
+                        <p id="today-revenue">LKR 45,500</p>
+                    </div>
+                    <div class="summary-card pending-orders">
+                        <i class="fas fa-clock"></i>
+                        <h3>සකස් කරන ඇණවුම්</h3>
+                        <p id="preparing-orders">5</p>
+                    </div>
+                    <div class="summary-card delivery-out">
+                        <i class="fas fa-truck-moving"></i>
+                        <h3>Delivery යවන ඇණවුම්</h3>
+                        <p id="delivery-orders">2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="orders" style="display: none;">
+                <h2>ඇණවුම් කළමනාකරණය</h2>
+                <div class="order-filter-bar">
+                    <button class="filter-btn active" data-status="Pending">නව ඇණවුම් (Pending)</button>
+                    <button class="filter-btn" data-status="Preparing">සකස් කරන</button>
+                    <button class="filter-btn" data-status="Out for Delivery">බෙදාහරින</button>
+                    <button class="filter-btn" data-status="Delivered">බෙදාහැර අවසන්</button>
+                </div>
+
+                <div class="orders-list-admin" id="orders-list-admin">
+                    <div class="no-data-msg">සියලු ඇණවුම් බාරගෙන අවසන්.</div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="products" style="display: none;">
+                <h2>නිෂ්පාදන කළමනාකරණය</h2>
+                <button class="btn-primary-add" id="add-product-btn">
+                    <i class="fas fa-plus"></i> නව Pizza/Package එකතු කරන්න
+                </button>
+                
+                <table id="product-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>නම</th>
+                            <th>වර්ගය</th>
+                            <th>මිල (LKR)</th>
+                            <th>ක්‍රියා</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="content" style="display: none;">
+                <h2>වෙබ් අඩවියේ වචන සහ SEO කළමනාකරණය</h2>
+                <p class="info-note">⚠️ ඔබ මෙහි වචන වෙනස් කළ විට, වෙබ් අඩවියේ එම ස්ථානවල නව වචනය දර්ශනය වනු ඇත.</p>
+                
+                <div class="content-manager-grid">
+                    <div class="form-group-admin">
+                        <label for="text-homepage-title">මුල් පිටුවේ මාතෘකාව (H2)</label>
+                        <input type="text" id="text-homepage-title" value="අපගේ ජනප්‍රියතම Pizza">
+                    </div>
+                    <div class="form-group-admin">
+                        <label for="text-cart-btn">කරත්ත බොත්තමේ වචනය</label>
+                        <input type="text" id="text-cart-btn" value="කරත්තයට එක් කරන්න">
+                    </div>
+                    <div class="form-group-admin">
+                        <label for="text-delivery-zone">බෙදාහැරීමේ ප්‍රදේශයේ පණිවිඩය</label>
+                        <textarea id="text-delivery-zone" rows="3">අපි Imaduwa සහ Wanchawala අවට ප්‍රදේශවලට බෙදාහැරීම් සිදු කරන්නෙමු.</textarea>
+                    </div>
+
+                    <div class="form-group-admin">
+                        <label for="text-site-title">වෙබ් අඩවියේ Title (Browser Tab)</label>
+                        <input type="text" id="text-site-title" value="Ambawatta's Pizzeria | Online Order">
+                    </div>
+                </div>
+                <button class="btn-primary-add update-content-btn"><i class="fas fa-save"></i> වෙනස්කම් සුරකින්න</button>
+            </div>
+
+            <div class="tab-content" id="settings" style="display: none;">
+                <h2>වෙබ් අඩවි සැකසුම්</h2>
+                <div class="form-group-admin">
+                    <label>බෙදාහැරීමේ කලාපය (Delivery Zone) සකසන්න</label>
+                    <p class="info-note">සිතියම මත රවුම ඇදීමෙන් (Drag) හෝ විශාල කිරීමෙන් (Zoom) කලාපය වෙනස් කරන්න.</p>
+                    
+                    <div id="admin-map-zone" style="height: 400px; width: 100%; border-radius: 10px; margin-top: 10px; background: #eee;">
+                        </div>
+                    <div class="delivery-zone-data">
+                        <p>වත්මන් කේන්ද්‍රය: <span id="current-center">6.095, 80.345</span></p>
+                        <p>වත්මන් සීමාව (Radius): <span id="current-radius">7.0 km</span></p>
+                    </div>
+                </div>
+                <button class="btn-primary-add update-settings-btn"><i class="fas fa-save"></i> Delivery Zone සුරකින්න</button>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

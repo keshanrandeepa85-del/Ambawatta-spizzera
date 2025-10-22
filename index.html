@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambawatta's Pizzeria | Online Order</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Ambawatta's Pizzeria Logo"> 
+                <h1>Ambawatta's Pizzeria</h1>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="product-search" placeholder="ඔබට අවශ්‍ය Pizza හෝ පැකේජය සොයන්න...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">මුල් පිටුව</a></li>
+                    <li><a href="#pizzas">Pizza වර්ග</a></li>
+                    <li><a href="#packages">විශේෂ පැකේජ</a></li>
+                    <li><a href="#offers">දීමනා</a></li>
+                    <li><a href="#gallery">ගැලරිය</a></li>
+                    <li><a href="#contact">අප අමතන්න</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <button class="icon-btn" title="ගිණුම"><i class="fas fa-user"></i></button>
+                
+                <button class="icon-btn cart-btn" title="කරත්තය">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                
+                <button class="icon-btn contact-btn" title="අප අමතන්න">
+                    <i class="fas fa-phone"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('images/offers/offer1.jpg');">
+                <div class="caption">
+                    <h2>සති අන්තයේ විශේෂ දීමනාව</h2>
+                    <p>ඕනෑම Large Pizza 2ක් සඳහා 20%ක වට්ටමක්!</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/offers/offer2.jpg');">
+                <div class="caption">
+                    <h2>නව Spicy Seafood Delight</h2>
+                    <p>මුහුදු ආහාර ලෝලීන් සඳහා!</p>
+                </div>
+            </div>
+            </div>
+        <div class="delivery-info">
+            <p><i class="fas fa-map-marker-alt"></i> අපි Imaduwa සහ Wanchawala අවට ප්‍රදේශවලට බෙදාහැරීම් සිදු කරන්නෙමු.</p>
+        </div>
+    </section>
+    
+    <main>
+        <section id="categories" class="categories-section">
+            <h2>අපගේ වර්ගීකරණයන්</h2>
+            <div class="category-list">
+                <button class="category-btn" data-category="pizzas"><i class="fas fa-pizza-slice"></i> Pizza</button>
+                <button class="category-btn" data-category="packages"><i class="fas fa-box-open"></i> විශේෂ පැකේජ</button>
+                <button class="category-btn" data-category="sides"><i class="fas fa-utensils"></i> අමතර අයිතම</button>
+                </div>
+        </section>
+
+        <section id="product-list" class="product-list-section">
+            <h2>අපගේ ජනප්‍රියතම Pizza</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/pizzas/chickentikka.jpg" alt="Signature Chicken Tikka">
+                    <h3>Signature Chicken Tikka</h3>
+                    <p class="price">LKR 2,500</p>
+                    <button class="add-to-cart-btn" data-product-id="1">කරත්තයට එක් කරන්න</button>
+                    </div>
+                
+                </div>
+            <div id="no-products-message" style="display:none; text-align: center; padding: 50px;">
+                <p>⚠️ දැනට දර්ශනය කිරීමට කිසිදු නිෂ්පාදනයක් නොමැත.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="contact-info-footer">
+                <h3>අප අමතන්න (Contact Us)</h3>
+                <p>ප්‍රධාන අංකය: <a href="tel:0774522007" class="contact-number-link">0774522007</a></p>
+                <p>ඇණවුම් Email: <a href="mailto:keshanrandeepa85@gmail.com">keshanrandeepa85@gmail.com</a></p>
+                <p>යෝජනා/චෝදනා: <a href="mailto:keshanrandeepa85@gmail.com">keshanrandeepa85@gmail.com</a></p>
+            </div>
+            
+            <div class="social-media-footer">
+                <h3>සමාජ මාධ්‍ය</h3>
+                <a href="#" target="_blank" class="social-icon facebook-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="social-icon whatsapp-icon" title="WhatsApp Channel"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" target="_blank" class="social-icon instagram-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="social-icon gallery-icon" title="Photo Gallery"><i class="fas fa-images"></i> ගැලරිය</a>
+            </div>
+            
+            <div class="delivery-map-footer">
+                <h3>බෙදාහැරීමේ සීමාව</h3>
+                <p>අපි Imaduwa සහ Wanchawala අවට ප්‍රදේශවලට සේවය සපයන්නෙමු.</p>
+                </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Ambawatta's Pizzeria. සියලුම හිමිකම් ඇවිරිණි.
+        </div>
+            <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>ඔබගේ කරත්තය (Your Cart)</h2>
+
+            <ul id="cart-items-list">
+                <p class="cart-empty-msg">ඔබගේ කරත්තය හිස්ය.</p>
+            </ul>
+
+            <div class="cart-summary">
+                <strong>මුළු මුදල (Total):</strong>
+                <strong id="cart-total-price">LKR 0.00</strong>
+            </div>
+
+            <div class="special-instructions-box">
+                <label for="special-instructions">විශේෂ උපදෙස් (Special Instructions):</label>
+                <textarea id="special-instructions" 
+                          rows="4" 
+                          placeholder="උදා: අමතර චීස්, මස් යොදන්න. සැර අඩු කරන්න..."></textarea>
+            </div>
+
+            <button id="checkout-btn" class="btn-primary-full">
+                ඇණවුම තහවුරු කරන්න (Checkout)
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div id="checkout-form-modal" class="modal" style="display:none;">
+        </div>
+
+    ```
+
+---
+    <div id="checkout-form-modal" class="modal">
+        <div class="modal-content checkout-modal-content">
+            <span class="close-modal" id="close-checkout-modal">&times;</span>
+            <h2>බෙදාහැරීමේ විස්තර (Delivery Details)</h2>
+
+            <form id="checkout-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="customer-name">නම (Name)</label>
+                        <input type="text" id="customer-name" name="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">දුරකථන අංකය (Phone)</label>
+                        <input type="tel" id="customer-phone" name="customerPhone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email">Email ලිපිනය (අත්‍යවශ්‍ය නොවේ)</label>
+                    <input type="email" id="customer-email" name="customerEmail">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-address">ලිපිනය (Address)</label>
+                    <textarea id="customer-address" name="customerAddress" rows="3" placeholder="නිවසේ අංකය, මාවත, නගරය..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>බෙදාහැරීමේ ස්ථානය (Delivery Location)</label>
+                    <p class="location-info">කරුණාකර සිතියම මත ඔබගේ ස්ථානය තෝරන්න. (අපගේ සීමාව: Imaduwa & Wanchawala අවට)</p>
+                    
+                    <div id="map-picker" style="height: 300px; width: 100%; margin-top: 10px; border-radius: 10px; background: #eee;">
+                        </div>
+                    
+                    <p id="location-error-msg" style="color: red; display: none; margin-top: 10px;">
+                        ⚠️ කණගාටුයි, ඔබ තෝරාගත් ස්ථානය අපගේ බෙදාහැරීමේ සීමාවෙන් (Delivery Zone) පිටත පිහිටා ඇත.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>ගෙවීම් ක්‍රමය (Payment Method)</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="pay-cod" name="paymentMethod" value="cod" checked>
+                            <label for="pay-cod">
+                                <i class="fas fa-hand-holding-usd"></i> භාණ්ඩ ලැබුණු පසු මුදල් ගෙවීම (Cash on Delivery)
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="pay-bank" name="paymentMethod" value="bank">
+                            <label for="pay-bank">
+                                <i class="fas fa-university"></i> බැංකු තැන්පතුව (Bank Deposit)
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="pay-card" name="paymentMethod" value="card">
+                            <label for="pay-card">
+                                <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> ක්‍රෙඩිට්/ඩෙබිට් කාඩ් (Credit/Debit Card)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="bank-details-info" class="payment-info-box" style="display: none;">
+                    <p>කරුණාකර මුළු මුදල පහත ගිණුමට බැර කර, රිසිට්පතේ ඡායාරූපයක් අප වෙත එවන්න.</p>
+                    <ul>
+                        <li><strong>Bank:</strong> People's Bank, Imaduwa</li>
+                        <li><strong>Account Name:</strong> KESHAN RANDEEPA AMBAWATTA HEWAGE</li>
+                        <li><strong>Account No:</strong> 1247200150052774</li>
+                    </ul>
+                    <label for="receipt-upload">රිසිට්පත Upload කරන්න:</label>
+                    <input type="file" id="receipt-upload" name="receiptUpload" accept="image/*">
+                </div>
+                
+                <div id="card-payment-info" class="payment-info-box" style="display: none;">
+                    <p>ඔබව ආරක්ෂිත ගෙවීම් දොරටුව (Secure Payment Gateway) වෙත යොමු කරනු ලැබේ...</p>
+                    </div>
+
+                <button type="submit" id="submit-order-btn" class="btn-primary-full">
+                    <i class="fas fa-paper-plane"></i> ඇණවුම දැන්ම යවන්න (Place Order)
+                </button>
+            </form>
+        </div>
+    </div>
+        <div id="account-modal" class="modal">
+        <div class="modal-content account-modal-content">
+            <span class="close-modal" id="close-account-modal">&times;</span>
+            
+            <div id="login-view">
+                <h2>ගිණුමට ඇතුළු වන්න (Login)</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email ලිපිනය</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">මුරපදය (Password)</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary-full">
+                        <i class="fas fa-sign-in-alt"></i> ඇතුළු වන්න
+                    </button>
+                </form>
+                <p class="switch-form">
+                    ගිණුමක් නැද්ද? <a href="#" id="show-register-btn">අලුතින් ලියාපදිංචි වන්න</a>
+                </p>
+            </div>
+
+            <div id="register-view" style="display: none;">
+                <h2>ලියාපදිංචි වන්න (Register)</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-name">නම</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-phone">දුරකථන අංකය</label>
+                        <input type="tel" id="reg-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email ලිපිනය</label>
+                        <input type="email" id="reg-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">මුරපදය</label>
+                        <input type="password" id="reg-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary-full">
+                        <i class="fas fa-user-plus"></i> ලියාපදිංචි වන්න
+                    </button>
+                </form>
+                <p class="switch-form">
+                    දැනටමත් ගිණුමක් තිබේද? <a href="#" id="show-login-btn">ඇතුළු වන්න</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="user-dashboard-modal" class="modal">
+        <div class="modal-content dashboard-modal-content">
+            <span class="close-modal" id="close-dashboard-modal">&times;</span>
+            <h2 id="welcome-user-name">ප්‍රිය Ambawatta's පාරිභෝගිකයාණනි!</h2>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="orders">
+                    <i class="fas fa-clipboard-list"></i> මගේ ඇණවුම්
+                </button>
+                <button class="tab-btn" data-tab="tracking">
+                    <i class="fas fa-truck"></i> ඇණවුම නිරීක්ෂණය
+                </button>
+                <button class="tab-btn" data-tab="profile">
+                    <i class="fas fa-user-cog"></i> ගිණුම් විස්තර
+                </button>
+            </div>
+            
+            <div id="dashboard-content">
+                <div id="orders-tab-content" class="tab-content active">
+                    <h3>පැරණි ඇණවුම්</h3>
+                    <ul id="past-orders-list" class="orders-list">
+                        <li class="order-item"><p>ඔබ තවමත් කිසිදු ඇණවුමක් කර නොමැත.</p></li>
+                    </ul>
+                </div>
+
+                <div id="tracking-tab-content" class="tab-content" style="display: none;">
+                    <h3>වත්මන් ඇණවුම් තත්ත්වය</h3>
+                    </div>
+
+                <div id="profile-tab-content" class="tab-content" style="display: none;">
+                    <h3>ගිණුම් විස්තර</h3>
+                    <p>පැතිකඩ කළමනාකරණය සඳහා පෝරමය මෙහි පැමිණේ.</p>
+                </div>
+            </div>
+            
+            <button id="logout-btn" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> පිටවීම (Logout)
+            </button>
+        </div>
+    </div>
+
+
+    </footer>
+
+    <script src="js/animations.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/tracking.js"></script> 
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=geometry&callback=initMap" async defer></script>
+
+</body>
+
+</html>
