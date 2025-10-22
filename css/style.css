@@ -1015,3 +1015,105 @@ footer h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
+/* ----- 12. New Enhancement Styles ----- */
+
+/* Store Status Bar */
+#store-status-bar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 2000; /* Header එකටත් උඩින් */
+}
+#store-status-bar p {
+    margin: 0;
+}
+
+/* Disabled Add-to-Cart Button */
+.add-to-cart-btn:disabled {
+    background: #aaa;
+    color: #f5f5f5;
+    cursor: not-allowed;
+}
+.add-to-cart-btn:disabled:hover {
+    background: #aaa;
+    color: #f5f5f5;
+    transform: none;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 2rem 0 4rem 0;
+    background: var(--white);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Gallery Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 3rem 0;
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: center;
+}
+.contact-section form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
