@@ -205,3 +205,104 @@ document.addEventListener('DOMContentLoaded', () => {
     // (මෙම කොටස මුලින්ම පෙනෙන පරිදි active class එක යොදා ඇත)
 
 });
+
+// =========================================================
+// 1. DOM Elements සහ Modal Variables නිර්වචනය කිරීම
+// =========================================================
+
+const editModal = document.getElementById('edit-product-modal');
+const editForm = document.getElementById('edit-product-form');
+const closeEditModalBtn = document.getElementById('close-edit-modal');
+
+// Modal එක වසන්න
+if (closeEditModalBtn) {
+    closeEditModalBtn.onclick = function() {
+        editModal.style.display = 'none';
+    };
+}
+
+
+// =========================================================
+// 2. PRODUCT DELETE FUNCTION
+// =========================================================
+
+function deleteProduct(id) {
+    if (confirm(`ඔබට ID ${id} සහිත මෙම නිෂ්පාදනය ස්ථිරවම මකා දැමීමට අවශ්‍යද?`)) {
+        // Local Storage එකෙන් සියලු products ලබා ගන්න (නැතිනම් Sample Data)
+        let products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
+        
+        // Delete කිරීමට අවශ්‍ය product එක හැර අනෙකුත් products තෝරා ගන්න
+        let updatedProducts = products.filter(p => p.id !== id);
+        
+        // යාවත්කාලීන කළ ලැයිස්තුව Local Storage එකේ Save කරන්න
+        localStorage.setItem('adminProducts', JSON.stringify(updatedProducts));
+        
+        alert(`නිෂ්පාදනය ID ${id} සාර්ථකව මකා දැමිණි.`);
+        
+        // Product List එක නැවත පූරණය කරන්න
+        loadAdminProducts(); 
+    }
+}
+
+
+// =========================================================
+// 3. PRODUCT EDIT FUNCTION
+// =========================================================
+
+function editProduct(id) {
+    let products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
+    let productToEdit = products.find(p => p.id === id);
+
+    if (productToEdit) {
+        // 1. Modal එකේ ක්ෂේත්‍ර වලට දැනට පවතින දත්ත පූරණය කිරීම (Populate Form)
+        document.getElementById('edit-product-id').value = productToEdit.id;
+        document.getElementById('edit-product-name').value = productToEdit.name;
+        document.getElementById('edit-product-category').value = productToEdit.category;
+        document.getElementById('edit-product-price').value = productToEdit.price;
+        document.getElementById('edit-product-img').value = productToEdit.img;
+        
+        // 2. Modal එක දර්ශනය කිරීම
+        editModal.style.display = 'block';
+    }
+}
+
+
+// =========================================================
+// 4. Edit Form එක Submit කළ විට දත්ත Save කිරීම
+// =========================================================
+
+if (editForm) {
+    editForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // 1. යාවත්කාලීන කළ දත්ත ලබා ගැනීම
+        const id = parseInt(document.getElementById('edit-product-id').value);
+        const newName = document.getElementById('edit-product-name').value;
+        const newCategory = document.getElementById('edit-product-category').value;
+        const newPrice = parseFloat(document.getElementById('edit-product-price').value);
+        const newImg = document.getElementById('edit-product-img').value;
+
+        let products = JSON.parse(localStorage.getItem('adminProducts')) || adminProducts;
+        
+        // 2. ලැයිස්තුවේ ඇති product එක සොයාගෙන යාවත්කාලීන කිරීම
+        const index = products.findIndex(p => p.id === id);
+        if (index !== -1) {
+            products[index].name = newName;
+            products[index].category = newCategory;
+            products[index].price = newPrice;
+            products[index].img = newImg;
+        }
+
+        // 3. යාවත්කාලීන කළ ලැයිස්තුව Local Storage එකේ Save කිරීම
+        localStorage.setItem('adminProducts', JSON.stringify(products));
+        
+        alert(`නිෂ්පාදනය ID ${id} සාර්ථකව යාවත්කාලීන කරන ලදි.`);
+
+        // 4. Modal එක වසා, ලැයිස්තුව නැවත පූරණය කිරීම
+        editModal.style.display = 'none';
+        loadAdminProducts(); // Product list එක යාවත්කාලීන කරන්න
+        
+    });
+}
+
+
