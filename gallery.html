@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍕 Ambawatta's Pizzeria | අපගේ ගැලරිය</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/gallery.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Ambawatta's Pizzeria Logo"> 
+                <h1>Ambawatta's Pizzeria</h1>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="සොයන්න...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#home">මුල් පිටුව</a></li>
+                    <li><a href="index.html#product-list">ඇණවුම් කරන්න</a></li>
+                    <li><a href="gallery.html" class="active">ගැලරිය</a></li>
+                    <li><a href="index.html#contact-footer">අප අමතන්න</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="tel:0779459609" class="icon-btn contact-btn" title="Call Now">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <button class="icon-btn cart-btn" title="කරත්තය">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="gallery-main">
+        <section class="gallery-section container">
+            <h2>අපගේ රසවත් නිර්මාණ</h2>
+            
+            <p class="gallery-description">අපගේ නවතම සහ ජනප්‍රියතම පීසා, පැකේජ සහ ආහාර වල ඡායාරූප මෙහිදී ඔබට දැකගත හැක.</p>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery/photo1.jpg" alt="Chicken Tikka Pizza">
+                    <div class="caption-gallery">Signature Chicken Tikka</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/gallery/photo2.jpg" alt="Family Feast Package">
+                    <div class="caption-gallery">Family Feast (Package)</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/gallery/photo3.jpg" alt="Spicy Seafood Pizza">
+                    <div class="caption-gallery">Spicy Seafood Delight</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/gallery/photo4.jpg" alt="Garlic Bread and Sides">
+                    <div class="caption-gallery">Cheesy Garlic Bread</div>
+                </div>
+                
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2025 Ambawatta's Pizzeria.
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery පිටුවේ Cart count එක load කිරීම සඳහා
+        const cartCountElement = document.querySelector('.cart-count');
+        let cart = JSON.parse(localStorage.getItem('ambawattaCart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountElement.textContent = totalItems;
+    </script>
+</body>
+</html>
